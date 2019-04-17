@@ -1,5 +1,9 @@
 #version 330 core
 
+in vec3 fColor;
+in vec2 uv;
+
+uniform sampler2D texture_dds;
 // Ouput data
 out vec3 color;
 
@@ -7,6 +11,5 @@ void main()
 {
 
 	// Output color = red 
-	color = vec3(1,0,0);
-
+	color = fColor * texture(texture_dds, uv).rgb;
 }
