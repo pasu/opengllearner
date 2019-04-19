@@ -11,5 +11,5 @@ void main()
 {
 
 	// Output color = red 
-	color = fColor * texture(texture_dds, uv).rgb;
+	color = texture(texture_dds, uv).rgb;
 }
