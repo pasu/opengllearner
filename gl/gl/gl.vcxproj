@@ -162,6 +162,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="control.h" />
+    <ClInclude Include="fbowrapper.h" />
     <ClInclude Include="mesh.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="shader.h" />
@@ -177,6 +178,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="shader\quad.fragmentshader" />
+    <None Include="shader\quad.vertexshader" />
     <None Include="shader\SimpleFragmentShader.fragmentshader" />
     <None Include="shader\SimpleVertexShader.vertexshader" />
   </ItemGroup>
