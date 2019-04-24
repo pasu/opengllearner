@@ -7,6 +7,7 @@
 #include <iostream>
 #include<fstream>
 #include <vector>
+#include "shared.h"
 
 using namespace std;
 
@@ -15,6 +16,8 @@ using namespace std;
 #define FOURCC_DXT5 0x35545844 // Equivalent to "DXT5" in ASCII
 
 GLuint loadDDS(const char * imagepath);
+
+GLuint genTexture();
 
 class CL_Texture
 {

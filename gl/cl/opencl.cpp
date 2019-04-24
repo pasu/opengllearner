@@ -73,7 +73,7 @@ static int sourceFiles = 0;
 static char* sourceFile[64]; // yup, ugly constant
 
 static size_t workSize[] = { SCRWIDTH, SCRHEIGHT};
-static size_t localSize[] = { 32, 4 };
+static size_t localSize[] = { LocalSize_X, LocalSize_Y };
 
 
 Buffer::Buffer(unsigned int N, unsigned int t /*= DEFAULT*/, void* ptr /*= 0*/)

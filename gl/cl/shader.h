@@ -84,3 +84,45 @@ GLuint loadshaders(const char* v_file, const char* f_file)
 
     return prg_ID;
 }
+
+GLuint loadcomputeshader(const char* c_file)
+{
+    GLuint c_id = glCreateShader(GL_COMPUTE_SHADER);
+
+    string c_code = readFile(c_file);
+    const char* v = c_code.c_str();
+    glShaderSource(c_id, 1, &v, NULL);
+    glCompileShader(c_id);
+
+    GLint Result = GL_FALSE;
+    int InfoLogLength;
+
+    glGetShaderiv(c_id, GL_COMPILE_STATUS, &Result);
+    glGetShaderiv(c_id, GL_INFO_LOG_LENGTH, &InfoLogLength);
+    if (InfoLogLength > 0)
+    {
+        std::vector<char> v_error_message(InfoLogLength + 1);
+        glGetShaderInfoLog(c_id, InfoLogLength, NULL, &v_error_message[0]);
+        printf("%s\n", &v_error_message[0]);
+    }
+
+
+    GLuint prg_ID = glCreateProgram();
+    glAttachShader(prg_ID, c_id);
+    glLinkProgram(prg_ID);
+
+    glGetProgramiv(prg_ID, GL_LINK_STATUS, &Result);
+    glGetProgramiv(prg_ID, GL_INFO_LOG_LENGTH, &InfoLogLength);
+    if (InfoLogLength > 0)
+    {
+        vector<char> p_error_message(InfoLogLength + 1);
+        glGetProgramInfoLog(prg_ID, InfoLogLength, NULL, &p_error_message[0]);
+        printf("%s\n", &p_error_message[0]);
+    }
+
+    glDetachShader(prg_ID, c_id);
+
+    glDeleteShader(c_id);
+
+    return prg_ID;
+}
