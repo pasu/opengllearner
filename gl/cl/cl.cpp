@@ -59,11 +59,7 @@ int main_compute()
 
     ////////////////////////////////////////////////////////////////////
     GLuint texHandle = genTexture();
-    //CL_Texture* clOutput = new CL_Texture(SCRWIDTH, SCRHEIGHT, CL_Texture::FLOAT);
-    //GLuint texHandle = clOutput->GetID();
-
     GLuint compute_ID = loadcomputeshader("./shader/compute.cpp");
-
     ///////////////////////////////////////////////////////////////////////
 
     GLuint quad_ID = loadshaders("./shader/quad.vertexshader", "./shader/quad.fragmentshader");
@@ -122,7 +118,6 @@ int main_compute()
     }
 
     glDeleteVertexArrays(1, &vao);
-    //glDeleteTextures(1, &_Texture);
 
     glDeleteBuffers(1, &quad_vertexbuffer);
     glDeleteProgram(quad_ID);
@@ -135,8 +130,8 @@ int main_compute()
 int main_cl()
 {
     glfwInit();
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     window = glfwCreateWindow(SCRWIDTH, SCRHEIGHT, "cl", NULL, NULL);
@@ -159,8 +154,6 @@ int main_cl()
     }
 
     double lastTime = glfwGetTime();
-
-    GLuint _Texture = loadDDS("./data/uvtemplate.DDS");
 
     GLuint quad_ID = loadshaders("./shader/quad.vertexshader", "./shader/quad.fragmentshader");
     GLuint _qtextureID = glGetUniformLocation(quad_ID, "texture_dds");
@@ -227,7 +220,6 @@ int main_cl()
     }
 
     glDeleteVertexArrays(1, &vao);
-    glDeleteTextures(1, &_Texture);
 
     glDeleteBuffers(1, &quad_vertexbuffer);
     glDeleteProgram(quad_ID);
