@@ -14,7 +14,7 @@ GLFWwindow* window;
 
 #include <chrono>
 
-#define SUPPORT_CL
+//#define SUPPORT_CL
 
 void processInput(GLFWwindow* window)
 {

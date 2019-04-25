@@ -1,5 +1,5 @@
 #define SCRWIDTH			800
-#define SCRHEIGHT			600
+#define SCRHEIGHT			800
 
 #define LocalSize_X         32
 #define LocalSize_Y         4
